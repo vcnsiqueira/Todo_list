@@ -1,0 +1,170 @@
+@font-face {
+  font-family: Lato;
+  src: url("https://fonts.googleapis.com/css?family=Lato:300,400,900,900i");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(244, 243, 243);
+  font-family: "Lato", sans-serif;
+}
+
+.wrapper {
+  max-width: 480px;
+  margin: auto;
+  background: #fff;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+}
+
+.title {
+  align-self: flex-start;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 2rem;
+  font-weight: 300;
+  color: #333;
+  margin-bottom: 35px;
+}
+
+.todoInput {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 35px;
+}
+
+input {
+  width: 75%;
+  margin-right: 25px;
+  padding: 15px 0 15px 15px;
+  border-radius: 4px;
+  border: 1px solid rgb(238, 238, 238);
+}
+
+button {
+  background: #0779E4;
+  border: none;
+  font-size: 1rem;
+  font-weight: 300;
+  font-family: "Lato", sans-serif;
+  padding: 15px 25px;
+  border-radius: 4px;
+  color: #fff;
+}
+
+ul {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+li {
+  font-weight: 300;
+  padding: 2px;
+  margin: 2px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+p {
+  font-family: "cursive";
+  color:#555;
+  padding: 5px;
+}
+
+.logo-container {
+  margin-bottom: 25px;
+}
+
+img {
+  height: 25px;
+}
+
+button.delete {
+  color: #F64B3C;
+  background: none;
+  padding: 5px;
+  border: 1px solid #F64B3C;
+  border-radius: 4px;
+}
+
+button.delete:hover {
+  color: #FFFFFF;
+  background: #F64B3C;
+}
+
+button.delete:focus {
+  outline: none;
+}
+
+button.done {
+  color: #649B66;
+  background: none;
+  padding: 5px;
+  border: 1px solid #649B66;
+  border-radius: 4px;
+  margin-right:1px;
+}
+
+button.done:hover {
+  color: #FFFFFF;
+  background: #649B66;
+}
+
+button.done:focus {
+  outline: none;
+}
+
+.donelist {
+  padding-top:20px;
+}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+
+  width: 100px;
+  bottom: 120%;
+  left: 50%;
+  margin-left: -50px; /* Use half of the width (120/2 = 60), to center the tooltip */
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
