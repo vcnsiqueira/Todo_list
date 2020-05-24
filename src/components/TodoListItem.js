@@ -7,7 +7,7 @@ const TodoListItem = (props) => {
         <li>
             <p>{props.item.label}</p>
             <div>
-                <AddItemButton onClick={() => {props.handleDone(props.item)}} />
+                {props.handleDone && (<AddItemButton onClick={() => {props.handleDone(props.item)}} />)}
                 <DeleteItemButton onClick={() => {props.handleRemove(props.item)}} />
             </div>
         </li>

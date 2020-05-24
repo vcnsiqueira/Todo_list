@@ -6,7 +6,6 @@ import "../styles/App.css";
 import Title from './Title';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
-import DoneList from './DoneList';
 
 class App extends Component {
 
@@ -98,7 +97,9 @@ class App extends Component {
                     handleButtonSubmit={this.handleButtonSubmit}
                 />
                 <TodoList list={this.state.list} handleRemove={this.handleRemove} handleDone={this.handleDone} />
-                <DoneList doneList={this.state.doneList} handleRemoveDone={this.handleRemoveDone}/>
+                <TodoList list={this.state.doneList} handleRemove={this.handleRemoveDone}>
+                    Tarefas Prontas
+                </TodoList>
             </div>
         );
     }
