@@ -35,9 +35,6 @@ class App extends Component {
 
         this.setState({
             list: [...this.state.list, this.state.pendingItem], // Atualizando a lista com o elemento submetido
-        });
-
-        this.setState({
             pendingItem: ''
         });
     }
