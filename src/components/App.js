@@ -29,6 +29,13 @@ class App extends Component {
 
     handleButtonSubmit = event => {
         event.preventDefault();
+
+        const item = String(this.state.pendingItem || '').trim();
+
+        if (item.length === 0) {
+            return;
+        }
+
         if(this.state.list.indexOf(this.state.pendingItem) > -1) {  // Verificando se a tarefa já existe na lista (se existir, não será permitido acrescentar)
             return alert('Essa tarefa já existe! Escreva outra tarefa')
         }
