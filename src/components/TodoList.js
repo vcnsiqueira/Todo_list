@@ -3,7 +3,7 @@ import React from 'react';
 import TodoListItem from './TodoListItem';
 import ListTitle from './ListTitle';
 
-const TodoList = (props) => {
+const TodoList = props => {
     // Se a lista está vazia não exibe nada
     if (props.list.length === 0) {
         return null;
@@ -24,6 +24,6 @@ const TodoList = (props) => {
             </ul>
         </div>
     );
-}
+};
 
 export default TodoList

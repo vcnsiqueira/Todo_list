@@ -91,7 +91,7 @@ class App extends Component {
             <div className="wrapper">
                 <Title>Lista de Tarefas</Title>
                 <TodoForm
-                    ref={(input) => this.inputRef = input}
+                    ref={input => this.inputRef = input}
                     value={this.state.pendingItem}
                     onChange={this.handlePendingItem}
                     onSubmit={this.handleButtonSubmit}
