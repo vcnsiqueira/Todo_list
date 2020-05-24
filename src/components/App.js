@@ -23,29 +23,29 @@ class App extends Component {
     };
 
     handlePendingItem = event => {
-        const item = String(event.target.value || '').trim();
-
         this.setState({
-            pendingItem: item
+            pendingItem: String(event.target.value || '')
         });
     }
 
     handleButtonSubmit = event => {
         event.preventDefault();
 
-        if (this.state.pendingItem.length === 0) {
+        const label = this.state.pendingItem.trim();
+
+        if (label.length === 0) {
             return;
         }
 
         // Verificando se a tarefa já existe na lista
         // (se existir, não será permitido acrescentar)
-        if (this.state.list.find(item => item.label === this.state.pendingItem)) {
+        if (this.state.list.find(item => item.label === label)) {
             return alert('Essa tarefa já existe! Escreva outra tarefa')
         }
 
         this.setState({
             // Atualizando a lista com o elemento submetido
-            list: [...this.state.list, {label: this.state.pendingItem}],
+            list: [...this.state.list, {label}],
 
             // Redefinindo valor do <input>
             pendingItem: ''
