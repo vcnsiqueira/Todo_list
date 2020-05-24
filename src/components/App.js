@@ -1,37 +1,26 @@
-import React, { Component } from "react";
+import React, {useState} from "react";
 import "../styles/reset.css";
 import "../styles/App.css";
-//import 'materizalize-css/dist/css/materialize.min.css';
-
 import Title from './Title';
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
+//import 'materizalize-css/dist/css/materialize.min.css';
 
-class App extends Component {
+const App = function () {
+    const [pendingItem, setPendingItem] = useState('');
+    const [list, setList] = useState([]);
+    const [doneList, setDoneList] = useState([]);
 
-    constructor(props) {
-        super(props)
+    let inputRef = null;
 
-        this.inputRef = null;
-
-        this.state = {
-            pendingItem:'',
-            list:[],
-            doneList:[],
-        };
-
+    const handlePendingItem = event => {
+        setPendingItem(String(event.target.value || ''));
     };
 
-    handlePendingItem = event => {
-        this.setState({
-            pendingItem: String(event.target.value || '')
-        });
-    }
-
-    handleButtonSubmit = event => {
+    const handleButtonSubmit = event => {
         event.preventDefault();
 
-        const label = this.state.pendingItem.trim();
+        const label = pendingItem.trim();
 
         if (label.length === 0) {
             return;
@@ -39,70 +28,60 @@ class App extends Component {
 
         // Verificando se a tarefa já existe na lista
         // (se existir, não será permitido acrescentar)
-        if (this.state.list.find(item => item.label === label)) {
+        if (list.find(item => item.label === label)) {
             return alert('Essa tarefa já existe! Escreva outra tarefa')
         }
 
-        this.setState({
-            // Atualizando a lista com o elemento submetido
-            list: [...this.state.list, {label}],
+        // Atualizando a lista com o elemento submetido
+        setList([...list, {label}]);
 
-            // Redefinindo valor do <input>
-            pendingItem: ''
-        });
+        // Redefinindo valor do <input>
+        setPendingItem('');
 
-        if (this.inputRef) {
-            this.inputRef.focus();
+        if (inputRef) {
+            inputRef.focus();
         }
     }
 
     // Função que remove o elemento selecionado
-    handleRemove = itemToRemove => {
+    const handleRemove = itemToRemove => {
         if (!confirm(`Remover a tarefa "${itemToRemove.label}"?`)) {
             return;
         }
 
-        this.setState({
-            list: this.state.list.filter(item => item !== itemToRemove)
-        });
-    }
+        setList(list.filter(item => item !== itemToRemove));
+    };
 
     // Função que atualiza a lista de tarefas realizadas
-    handleDone = doneItem => {
-        this.setState({
-            list: this.state.list.filter(item => item !== doneItem),
-            doneList: [...this.state.doneList, doneItem]
-        });
-    }
+    const handleDone = doneItem => {
+        setList(list.filter(item => item !== doneItem));
+        setDoneList([...doneList, doneItem]);
+    };
 
     // Função que remove o elemento da lista de tarefas já realizadas
-    handleRemoveDone = itemToRemove => {
+    const handleRemoveDone = itemToRemove => {
         if (!confirm(`Remover a tarefa "${itemToRemove.label}"?`)) {
             return;
         }
 
-        this.setState({
-            doneList: this.state.doneList.filter(item => item !== itemToRemove)
-        });
-    }
+        setDoneList(doneList.filter(item => item !== itemToRemove));
+    };
 
-    render() {
-        return (
-            <div className="wrapper">
-                <Title>Lista de Tarefas</Title>
-                <TodoForm
-                    ref={input => this.inputRef = input}
-                    value={this.state.pendingItem}
-                    onChange={this.handlePendingItem}
-                    onSubmit={this.handleButtonSubmit}
-                />
-                <TodoList list={this.state.list} onRemove={this.handleRemove} onDone={this.handleDone} />
-                <TodoList list={this.state.doneList} onRemove={this.handleRemoveDone}>
-                    Tarefas Prontas
-                </TodoList>
-            </div>
-        );
-    }
-}
+    return (
+        <div className="wrapper">
+            <Title>Lista de Tarefas</Title>
+            <TodoForm
+                ref={input => inputRef = input}
+                value={pendingItem}
+                onChange={handlePendingItem}
+                onSubmit={handleButtonSubmit}
+            />
+            <TodoList list={list} onRemove={handleRemove} onDone={handleDone} />
+            <TodoList list={doneList} onRemove={handleRemoveDone}>
+                Tarefas Prontas
+            </TodoList>
+        </div>
+    );
+};
 
 export default App;
