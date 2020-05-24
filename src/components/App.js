@@ -92,12 +92,12 @@ class App extends Component {
                 <Title title={'Lista de Tarefas'}/>
                 <TodoForm
                     ref={(input) => this.inputRef = input}
-                    pendingItem={this.state.pendingItem}
-                    handlePendingItem={this.handlePendingItem}
-                    handleButtonSubmit={this.handleButtonSubmit}
+                    value={this.state.pendingItem}
+                    onChange={this.handlePendingItem}
+                    onSubmit={this.handleButtonSubmit}
                 />
-                <TodoList list={this.state.list} handleRemove={this.handleRemove} handleDone={this.handleDone} />
-                <TodoList list={this.state.doneList} handleRemove={this.handleRemoveDone}>
+                <TodoList list={this.state.list} onRemove={this.handleRemove} onDone={this.handleDone} />
+                <TodoList list={this.state.doneList} onRemove={this.handleRemoveDone}>
                     Tarefas Prontas
                 </TodoList>
             </div>

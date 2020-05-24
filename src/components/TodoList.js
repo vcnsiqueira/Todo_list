@@ -18,8 +18,8 @@ const TodoList = (props) => {
                         <TodoListItem
                             key={index}
                             item={element}
-                            handleRemove={props.handleRemove}
-                            handleDone={props.handleDone}
+                            onRemove={props.onRemove}
+                            onDone={props.onDone}
                         />
                     );
                 })}
