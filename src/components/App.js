@@ -13,6 +13,8 @@ class App extends Component {
     constructor(props) {
         super(props)
 
+        this.inputRef = null;
+
         this.state = {
             pendingItem:'',
             list:[],
@@ -48,6 +50,10 @@ class App extends Component {
             // Redefinindo valor do <input>
             pendingItem: ''
         });
+
+        if (this.inputRef) {
+            this.inputRef.focus();
+        }
     }
 
     handleRemove = index => { // Função que remove o elemento selecionado
@@ -89,6 +95,7 @@ class App extends Component {
             <div className="wrapper">
                 <Title title={'Lista de Tarefas'}/>
                 <TodoForm
+                    ref={(input) => this.inputRef = input}
                     pendingItem={this.state.pendingItem}
                     handlePendingItem={this.handlePendingItem}
                     handleButtonSubmit={this.handleButtonSubmit}

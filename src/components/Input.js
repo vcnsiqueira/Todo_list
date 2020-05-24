@@ -1,9 +1,16 @@
 import React from 'react';
 
-const Input = (props) => {
+const Input = React.forwardRef((props, ref) => {
     return(
-        <input type="text" onChange={props.onChange} value={props.value} placeholder="Adicione um item" data-ls-module="charCount" maxLength="30"/>
+        <input
+            ref={ref}
+            type="text"
+            value={props.value}
+            placeholder="Adicione um item"
+            data-ls-module="charCount"
+            maxLength="30"
+            onChange={props.onChange}/>
     );
-}
+})
 
 export default Input;
