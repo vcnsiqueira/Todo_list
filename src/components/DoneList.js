@@ -11,11 +11,10 @@ const DoneList = (props) => {
                 <ul>
                     {props.doneList.map((element, index) => {
                         return(
-                            <DoneListItem 
-                                key = {index}
-                                itemIndex={index}
-                                item = {element}
-                                handleRemoveDone = {props.handleRemoveDone}
+                            <DoneListItem
+                                key={index}
+                                item={element}
+                                handleRemoveDone={props.handleRemoveDone}
                             />
                         );
                     })}

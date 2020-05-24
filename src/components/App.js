@@ -38,14 +38,15 @@ class App extends Component {
             return;
         }
 
-        // Verificando se a tarefa já existe na lista (se existir, não será permitido acrescentar)
-        if (this.state.list.indexOf(this.state.pendingItem) > -1) {
+        // Verificando se a tarefa já existe na lista
+        // (se existir, não será permitido acrescentar)
+        if (this.state.list.find(item => item.label === this.state.pendingItem)) {
             return alert('Essa tarefa já existe! Escreva outra tarefa')
         }
 
         this.setState({
             // Atualizando a lista com o elemento submetido
-            list: [...this.state.list, this.state.pendingItem],
+            list: [...this.state.list, {label: this.state.pendingItem}],
 
             // Redefinindo valor do <input>
             pendingItem: ''
@@ -56,37 +57,33 @@ class App extends Component {
         }
     }
 
-    handleRemove = index => { // Função que remove o elemento selecionado
-        if (!confirm('Remover este item?')) {
+    // Função que remove o elemento selecionado
+    handleRemove = itemToRemove => {
+        if (!confirm(`Remover a tarefa "${itemToRemove.label}"?`)) {
             return;
         }
 
         this.setState({
-            list: this.state.list.filter(item => {
-                return this.state.list.indexOf(item) !== index
-            })
+            list: this.state.list.filter(item => item !== itemToRemove)
         });
     }
 
-    handleDone = index => { // Função que atualiza a lista de tarefas realizadas
-
-        const newDoneElement = this.state.list.filter(item => {
-            return this.state.list.indexOf(item) === index
-        })
-
+    // Função que atualiza a lista de tarefas realizadas
+    handleDone = doneItem => {
         this.setState({
-            doneList: [...this.state.doneList, newDoneElement],
-            list: this.state.list.filter(item => {
-                return this.state.list.indexOf(item) !== index
-            })
+            list: this.state.list.filter(item => item !== doneItem),
+            doneList: [...this.state.doneList, doneItem]
         });
     }
 
-    handleRemoveDone = index => { // Função que remove o elemento da lista de tarefas já realizadas
+    // Função que remove o elemento da lista de tarefas já realizadas
+    handleRemoveDone = itemToRemove => {
+        if (!confirm(`Remover a tarefa "${itemToRemove.label}"?`)) {
+            return;
+        }
+
         this.setState({
-            doneList: this.state.doneList.filter(item => {
-                return this.state.doneList.indexOf(item) !== index
-            })
+            doneList: this.state.doneList.filter(item => item !== itemToRemove)
         });
     }
 

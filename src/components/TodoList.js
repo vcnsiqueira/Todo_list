@@ -7,12 +7,11 @@ const TodoList = (props) => {
         <ul>
             {props.list.map((element, index) => {
                 return(
-                    <TodoListItem 
-                        key = {index}
-                        itemIndex={index}
-                        item = {element}
-                        handleRemove = {props.handleRemove} 
-                        handleDone = {props.handleDone}
+                    <TodoListItem
+                        key={index}
+                        item={element}
+                        handleRemove={props.handleRemove}
+                        handleDone={props.handleDone}
                     />
                 );
             })}

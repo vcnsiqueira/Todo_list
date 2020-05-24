@@ -5,10 +5,10 @@ import DeleteItemButton from './DeleteItemButton';
 const TodoListItem = (props) => {
     return(
         <li>
-            <p>{props.item}</p>
+            <p>{props.item.label}</p>
             <div>
-                <AddItemButton onClick={() => {props.handleDone(props.itemIndex)}} />
-                <DeleteItemButton onClick={() => {props.handleRemove(props.itemIndex)}} />
+                <AddItemButton onClick={() => {props.handleDone(props.item)}} />
+                <DeleteItemButton onClick={() => {props.handleRemove(props.item)}} />
             </div>
         </li>
     );
