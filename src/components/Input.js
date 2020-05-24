@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Input = React.forwardRef((props, ref) => {
-    return(
+    return (
         <input
             ref={ref}
             type="text"

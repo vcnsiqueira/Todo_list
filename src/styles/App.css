@@ -23,7 +23,6 @@ body {
 }
 
 .title {
-  align-self: flex-start;
   text-align: center;
   vertical-align: middle;
   font-size: 2rem;

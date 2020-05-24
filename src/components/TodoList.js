@@ -9,20 +9,18 @@ const TodoList = (props) => {
         return null;
     }
 
-    return(
+    return (
         <div className="todolist">
             {props.children && (<ListTitle>{props.children}</ListTitle>)}
             <ul>
-                {props.list.map((element, index) => {
-                    return(
-                        <TodoListItem
-                            key={index}
-                            item={element}
-                            onRemove={props.onRemove}
-                            onDone={props.onDone}
-                        />
-                    );
-                })}
+                {props.list.map((element, index) => (
+                    <TodoListItem
+                        key={index}
+                        item={element}
+                        onRemove={props.onRemove}
+                        onDone={props.onDone}
+                    />
+                ))}
             </ul>
         </div>
     );

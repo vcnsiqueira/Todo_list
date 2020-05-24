@@ -87,9 +87,9 @@ class App extends Component {
     }
 
     render() {
-        return(
+        return (
             <div className="wrapper">
-                <Title title={'Lista de Tarefas'}/>
+                <Title>Lista de Tarefas</Title>
                 <TodoForm
                     ref={(input) => this.inputRef = input}
                     value={this.state.pendingItem}

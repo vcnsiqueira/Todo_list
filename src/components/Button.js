@@ -2,7 +2,7 @@ import React from 'react';
 //import Button from '@material-ui/core/Button';
 
 const Button = (props) => {
-    return(
+    return (
         <button
             className={props.className}
             type={props.type || 'button'}

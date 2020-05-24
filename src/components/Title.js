@@ -1,10 +1,8 @@
 import React from 'react';
 
 const Title = (props) => {
-    return(
-        <div>
-            <div className="title">{props.title}</div>
-        </div>
+    return (
+        <h1 className="title">{props.children}</h1>
     )
 }
 

@@ -3,7 +3,7 @@ import AddItemButton from './AddItemButton';
 import DeleteItemButton from './DeleteItemButton';
 
 const TodoListItem = (props) => {
-    return(
+    return (
         <li>
             <p>{props.item.label}</p>
             <div>
