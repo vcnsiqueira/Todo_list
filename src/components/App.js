@@ -43,6 +43,10 @@ class App extends Component {
     }
 
     handleRemove = index => { // Função que remove o elemento selecionado
+        if (!confirm('Remover este item?')) {
+            return;
+        }
+
         this.setState({
             list: this.state.list.filter(item => {
                 return this.state.list.indexOf(item) !== index
