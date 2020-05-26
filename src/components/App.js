@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import "../styles/reset.css";
 import "../styles/App.css";
 import Title from './Title';
@@ -11,7 +11,7 @@ const App = function () {
     const [list, setList] = useState([]);
     const [doneList, setDoneList] = useState([]);
 
-    let inputRef = null;
+    const input = useRef(null);
 
     const handlePendingItem = event => {
         setPendingItem(String(event.target.value || ''));
@@ -38,9 +38,7 @@ const App = function () {
         // Redefinindo valor do <input>
         setPendingItem('');
 
-        if (inputRef) {
-            inputRef.focus();
-        }
+        input.current.focus();
     }
 
     // Função que remove o elemento selecionado
@@ -71,7 +69,7 @@ const App = function () {
         <div className="wrapper">
             <Title>Lista de Tarefas</Title>
             <TodoForm
-                ref={input => inputRef = input}
+                ref={input}
                 value={pendingItem}
                 onChange={handlePendingItem}
                 onSubmit={handleButtonSubmit}
